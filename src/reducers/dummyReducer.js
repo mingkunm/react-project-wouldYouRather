@@ -1,6 +1,6 @@
 import { DUMMY_ACTION } from "../actions/types";
 
-export default (state = [], action) => {
+const dummyReducer = (state = [], action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -10,3 +10,5 @@ export default (state = [], action) => {
       return state;
   }
 };
+
+export default dummyReducer;

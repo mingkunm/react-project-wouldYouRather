@@ -9,7 +9,7 @@ function App({ dummyAction }) {
 
   useEffect(() => {
     dummyAction();
-  }, []);
+  }, [dummyAction]);
 
   return (
     <div className="App">
