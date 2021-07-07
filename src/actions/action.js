@@ -1,7 +1,8 @@
 import { DUMMY_ACTION } from "./types.js";
 import { showLoading, hideLoading } from "react-redux-loading";
 
-export const dummyAction = () => async (dispatch) => {
+export const dummyAction = () => async (dispatch, getState) => {
+  console.log("Get state 1: ", getState());
   dispatch(showLoading());
 
   setTimeout(() => {
@@ -11,5 +12,7 @@ export const dummyAction = () => async (dispatch) => {
     });
 
     dispatch(hideLoading());
+
+    console.log("Get state 2: ", getState());
   }, 1000);
 };
