@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-
-import dummyReducer from "./dummyReducer";
 import { loadingBarReducer } from "react-redux-loading";
 
+import auth from "./auth";
+
 export default combineReducers({
-  dummyReducer,
+  auth,
   loadingBar: loadingBarReducer,
 });

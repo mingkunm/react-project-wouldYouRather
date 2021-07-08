@@ -1,28 +1,70 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import LoadingBar from "react-redux-loading";
 
 import Home from "./Home";
+import Login from "./Login";
+import Protected from "./Protected";
 
 // Redux action
-import { dummyAction } from "../actions/action";
+import { userLogout, loadUser } from "../actions/auth";
 
-function App({ dummyAction }) {
+function App({ auth, dummyAction, userLogout, loadUser }) {
   useEffect(() => {
-    dummyAction();
-  }, [dummyAction]);
+    loadUser();
+  }, [dummyAction, loadUser]);
+
+  const PrivateRoute = ({ children, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={() => {
+          return auth.isAuthenticated === true ? (
+            children
+          ) : (
+            <Redirect to="/login" />
+          );
+        }}
+      />
+    );
+  };
 
   return (
     <>
       <LoadingBar />
-      <Router>
-        <Switch>
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
+      {!auth.loading && (
+        <>
+          <Router>
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Home} />
+              <PrivateRoute path="/protected">
+                <Protected />
+              </PrivateRoute>
+            </Switch>
+          </Router>
+          {auth.isAuthenticated && (
+            <div>
+              <br />
+              <button onClick={userLogout}>Logout</button>
+            </div>
+          )}
+        </>
+      )}
     </>
   );
 }
 
-export default connect(null, { dummyAction })(App);
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps, { userLogout, loadUser })(App);
