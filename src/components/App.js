@@ -24,11 +24,16 @@ function App({ auth, userLogout, loadUser }) {
     return (
       <Route
         {...rest}
-        render={() => {
+        render={({ location }) => {
           return auth.isAuthenticated === true ? (
             children
           ) : (
-            <Redirect to="/login" />
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: location },
+              }}
+            />
           );
         }}
       />
