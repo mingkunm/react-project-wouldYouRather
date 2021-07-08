@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { userLogin } from "../actions/auth";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function Login({ auth, userLogin }) {
   const history = useHistory();
@@ -16,6 +16,10 @@ function Login({ auth, userLogin }) {
   return (
     <>
       <h1>Login Component</h1>
+      <div>
+        <Link to="/">Back to home</Link>
+      </div>
+      <br />
       <button onClick={userLogin}>Login</button>
     </>
   );

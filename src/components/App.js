@@ -15,10 +15,10 @@ import Protected from "./Protected";
 // Redux action
 import { userLogout, loadUser } from "../actions/auth";
 
-function App({ auth, dummyAction, userLogout, loadUser }) {
+function App({ auth, userLogout, loadUser }) {
   useEffect(() => {
     loadUser();
-  }, [dummyAction, loadUser]);
+  }, [loadUser]);
 
   const PrivateRoute = ({ children, ...rest }) => {
     return (
