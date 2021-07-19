@@ -7,10 +7,16 @@ import {
   Redirect,
 } from "react-router-dom";
 import LoadingBar from "react-redux-loading";
+import { ThemeProvider } from "@material-ui/core/styles";
 
+// Components
+import NavigationBar from "./NavigationBar";
 import Home from "./Home";
 import Login from "./Login";
 import Protected from "./Protected";
+
+// Material UI theme
+import Theme from "./UI/theme";
 
 // Redux action
 import { userLogout, loadUser } from "../actions/auth";
@@ -41,11 +47,12 @@ function App({ auth, userLogout, loadUser }) {
   };
 
   return (
-    <>
+    <ThemeProvider theme={Theme}>
       <LoadingBar />
       {!auth.loading && (
         <>
           <Router>
+            <NavigationBar />
             <Switch>
               <Route exact path="/login" component={Login} />
               <Route exact path="/" component={Home} />
@@ -62,7 +69,7 @@ function App({ auth, userLogout, loadUser }) {
           )}
         </>
       )}
-    </>
+    </ThemeProvider>
   );
 }
 
