@@ -10,13 +10,13 @@ import LoadingBar from "react-redux-loading";
 import { ThemeProvider } from "@material-ui/core/styles";
 
 // Components
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./navigationBar";
 import Home from "./Home";
-import Login from "./Login";
+import Login from "./login";
 import Protected from "./Protected";
 
 // Material UI theme
-import Theme from "./UI/theme";
+import Theme from "../UI/theme";
 
 // Redux action
 import { userLogout, loadUser } from "../actions/auth";
@@ -48,7 +48,9 @@ function App({ auth, userLogout, loadUser }) {
 
   return (
     <ThemeProvider theme={Theme}>
-      <LoadingBar />
+      <LoadingBar
+        style={{ backgroundColor: "rgb(56, 224, 154)", height: "5px" }}
+      />
       {!auth.loading && (
         <>
           <Router>

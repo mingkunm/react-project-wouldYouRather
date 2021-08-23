@@ -24,7 +24,7 @@ const useStyle = makeStyles((theme) => ({
     width: "100vw",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-end",
     borderBottom: `${theme.palette.primary.main} 4px solid`,
   },
   navContainer: {

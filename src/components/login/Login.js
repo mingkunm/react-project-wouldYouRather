@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-
-import { userLogin } from "../actions/auth";
 import { useHistory, Link, useLocation } from "react-router-dom";
+
+import { userLogin } from "../../actions/auth";
 
 function Login({ auth, userLogin }) {
   const history = useHistory();

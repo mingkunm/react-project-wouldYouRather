@@ -18,10 +18,11 @@ const useStyle = makeStyles(() => ({
   userInfoWrap: {
     width: "30%",
     minWidth: "230px",
+    flexWrap: "nowrap",
   },
   userInfoAuth: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
 }));
 

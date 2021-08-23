@@ -8,9 +8,9 @@ function MenuList() {
 
   return (
     <div className={classes.menuList}>
-      <MenuItem name={"Home"} />
-      <MenuItem name={"New Question"} />
-      <MenuItem name={"Leader Board"} />
+      <MenuItem name={"Home"} active={true} />
+      <MenuItem name={"New Question"} active={false} />
+      <MenuItem name={"Leader Board"} active={false} />
     </div>
   );
 }
@@ -20,7 +20,7 @@ const useStyle = makeStyles(() => ({
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "nowrap",
-    width: "345px",
+    width: "480px",
   },
 }));
 
